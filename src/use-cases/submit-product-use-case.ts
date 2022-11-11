@@ -1,3 +1,4 @@
+import { ProductsRepository } from '../repositories/products-repository';
 
 interface SubmitProductUseCaseRequest {
     name: string;
@@ -7,9 +8,24 @@ interface SubmitProductUseCaseRequest {
     qtd: number;
 }
 
-export async function SubmitProductUseCase({name, description, image, price, qtd}: SubmitProductUseCaseRequest) {
-    if(!name || !description || !image || !price || !qtd){
-        throw new Error('All informations are required')
-    }
+export class SubmitProductUseCase {
+    constructor(
+      private  ProductsRepository: ProductsRepository, 
+    ){}
 
+    async execute(request :SubmitProductUseCaseRequest){
+        const { name, description, image, price, qtd } = request;
+
+        if(!name || !description || !image || !price || !qtd){
+            throw new Error('All informations are required')
+        }
+
+        await this.ProductsRepository.create({
+            name,
+            description,
+            price,
+            qtd,
+            image
+        })
+    }
 }
