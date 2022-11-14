@@ -1,11 +1,11 @@
 import express from 'express';
-import newProducts from './controllers/newProducts';
-import products from './controllers/products';
+import postProducts from './controllers/postProducts';
+import getProducts from './controllers/getProducts';
 
 const routes = express.Router();
 
-routes.get('/products', products);
-routes.post('/newProduct', newProducts);
+routes.get('/getProducts', getProducts);
+routes.post('/postProduct', postProducts);
 
 routes.get('/login', async (req, res) => {
     res.status(200).json({name: 'lucal log'})

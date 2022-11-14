@@ -1,19 +1,12 @@
+import Products from '../interface';
 import { ProductsRepository } from '../repositories/products-repository';
-
-interface SubmitProductUseCaseRequest {
-    name: string;
-    description: string;
-    image: string;
-    price: string;
-    qtd: number;
-}
 
 export class SubmitProductUseCase {
     constructor(
       private  ProductsRepository: ProductsRepository, 
     ){}
 
-    async execute(request :SubmitProductUseCaseRequest){
+    async execute(request : Products){
         const { name, description, image, price, qtd } = request;
 
         if(!name || !description || !image || !price || !qtd){
