@@ -1,6 +1,6 @@
-import Products from "../interface";
+import { Product } from "../interface";
 
 export interface ProductsRepository{
-    create: (data: Products) => Promise<void>
+    create: (data: Product) => Promise<void>
 }
 
