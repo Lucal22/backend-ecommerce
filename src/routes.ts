@@ -5,7 +5,7 @@ import getProducts from './controllers/getProducts';
 const routes = express.Router();
 
 routes.get('/getProducts', getProducts);
-routes.post('/postProduct', postProducts);
+routes.post('/postProducts', postProducts);
 
 export default routes;
 
